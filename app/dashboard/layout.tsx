@@ -5,7 +5,7 @@ const DashboardLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return <div className="w-[98%] h-[94%]">{children}</div>;
+  return <div className="w-full h-full p-4">{children}</div>;
 };
 
 export default DashboardLayout;
