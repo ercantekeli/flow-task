@@ -18,14 +18,16 @@ body {
     rgba(170, 112, 224, 0.554)
   );
   --foreground: #171717;
-
+  --sidebar-bg: rgba(250, 244, 242, 0.45);
   --primary: #818cf8;
   --secondary: #4ade80;
   --accent: #fbbf24;
 
-  --border: #27272a;
-  --muted: #18181b;
+  --border: rgba(255, 255, 255, 0.6);
+  --muted: rgba(23, 23, 23, 0.45);
   --sidebar: rgba(250, 244, 242, 0.4);
+  --radius20: 20px;
+  --radius14: 14px;
 }
 
 @theme inline {
@@ -40,5 +42,7 @@ body {
 
   --color-border: var(--border);
   --color-muted: var(--muted);
-  --color-sidebar: var(--sidebar);
+  --color-sidebar: var(--sidebar-bg);
+  --radius-20: var(--radius20);
+  --radius-14: var(--radius14);
 }
