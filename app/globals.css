@@ -24,7 +24,9 @@ body {
   --accent: #fbbf24;
 
   --border: rgba(255, 255, 255, 0.6);
-  --muted: rgba(23, 23, 23, 0.45);
+  --text: "#171717";
+  --text-muted: rgba(23, 23, 23, 0.45);
+  --text-light: rgba(23, 23, 23, 0.25);
   --sidebar: rgba(250, 244, 242, 0.4);
   --radius20: 20px;
   --radius14: 14px;
@@ -39,9 +41,11 @@ body {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
+  --color-text: var(--text);
 
   --color-border: var(--border);
-  --color-muted: var(--muted);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
   --radius-20: var(--radius20);
   --radius-14: var(--radius14);
