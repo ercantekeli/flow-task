@@ -24,6 +24,7 @@ body {
   --accent: #fbbf24;
 
   --border: rgba(255, 255, 255, 0.6);
+  --button-bg: rgba(255, 255, 255, 0.4);
   --text: "#171717";
   --text-muted: rgba(23, 23, 23, 0.45);
   --text-light: rgba(23, 23, 23, 0.25);
@@ -44,6 +45,7 @@ body {
   --color-text: var(--text);
 
   --color-border: var(--border);
+  --color-button-bg: var(--button-bg);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);

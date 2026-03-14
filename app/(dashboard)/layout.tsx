@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
-import Sidebar from "../../components/dashboard/layout/Sidebar";
+import { usePathname } from "next/navigation";
+
+import Sidebar from "@/components/dashboard/layout/Sidebar";
 import Header from "@/components/dashboard/layout/Header";
 
 const DashboardLayout = ({
@@ -7,11 +11,32 @@ const DashboardLayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  const pathname = usePathname();
+
+  const headerContent: { [key: string]: { title: string; subtitle: string } } =
+    {
+      "/overview": {
+        title: "Good morning, Ercan 👋",
+        subtitle: "Here's what's happening with your projects today.",
+      },
+      "/board": {
+        title: "Board",
+        subtitle: "3 columns · 7 tasks",
+      },
+      "/settings": {
+        title: "Settings",
+        subtitle: "Customize your dashboard and preferences.",
+      },
+    };
+
   return (
     <div className="flex w-full h-full p-4 gap-2">
       <Sidebar />
       <main className="w-full">
-        <Header />
+        <Header
+          title={headerContent[pathname]?.title || ""}
+          subtitle={headerContent[pathname]?.subtitle || ""}
+        />
         {children}
       </main>
     </div>
