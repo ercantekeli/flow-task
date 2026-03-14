@@ -19,18 +19,22 @@ body {
   );
   --foreground: #171717;
   --sidebar-bg: rgba(250, 244, 242, 0.45);
+  --card-bg: rgba(255, 255, 255, 0.55);
   --primary: #818cf8;
   --secondary: #4ade80;
-  --accent: #fbbf24;
+  --warning: #fbbf24;
+  --danger: #dc2626;
 
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
   --text: "#171717";
   --text-muted: rgba(23, 23, 23, 0.45);
   --text-light: rgba(23, 23, 23, 0.25);
+  --lightGray: rgba(0, 0, 0, 0.08);
   --sidebar: rgba(250, 244, 242, 0.4);
-  --radius20: 20px;
   --radius14: 14px;
+  --radius18: 18px;
+  --radius20: 20px;
 }
 
 @theme inline {
@@ -41,14 +45,18 @@ body {
 
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
-  --color-accent: var(--accent);
+  --color-accent: var(--warning);
+  --color-danger: var(--danger);
   --color-text: var(--text);
+  --color-card-bg: var(--card-bg);
+  --color-lightGray: var(--lightGray);
 
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
-  --radius-20: var(--radius20);
   --radius-14: var(--radius14);
+  --radius-18: var(--radius18);
+  --radius-20: var(--radius20);
 }

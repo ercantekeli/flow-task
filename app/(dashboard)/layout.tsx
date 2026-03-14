@@ -30,9 +30,9 @@ const DashboardLayout = ({
     };
 
   return (
-    <div className="flex w-full h-full p-4 gap-2">
+    <div className="flex w-full h-full p-8 gap-8">
       <Sidebar />
-      <main className="w-full">
+      <main className="w-full flex flex-col gap-8">
         <Header
           title={headerContent[pathname]?.title || ""}
           subtitle={headerContent[pathname]?.subtitle || ""}
