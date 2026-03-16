@@ -1,10 +1,9 @@
 import React from "react";
-
+import Card from "../Card";
 function StatCard({
   icon,
   badge,
   color,
-  bgColor,
   value,
   label,
   progress,
@@ -12,13 +11,12 @@ function StatCard({
   icon: string;
   badge: string;
   color: string;
-  bgColor: string;
   value: number;
   label: string;
   progress: string;
 }) {
   return (
-    <div className="p-6 bg-card-bg rounded-18 flex flex-col gap-4 border border-border">
+    <Card>
       {/* stat header */}
       <div className="flex items-center justify-between">
         <div
@@ -28,7 +26,7 @@ function StatCard({
           {icon}
         </div>
         <div
-          className={`py-1 px-2 rounded-14 bg-primary/15 text-xs font-semibold`}
+          className="py-1 px-2 rounded-14 bg-primary/15 text-xs font-semibold"
           style={{ color: color, backgroundColor: `${color}20` }}
         >
           {badge}
@@ -45,7 +43,7 @@ function StatCard({
           style={{ backgroundColor: color, width: progress }}
         ></div>
       </div>
-    </div>
+    </Card>
   );
 }
 
