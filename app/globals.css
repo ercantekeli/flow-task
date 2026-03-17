@@ -27,6 +27,7 @@ body {
 
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
+  --col-bg: rgba(255, 255, 255, 0.25);
   --text: "#171717";
   --text-muted: rgba(23, 23, 23, 0.45);
   --text-light: rgba(23, 23, 23, 0.25);
@@ -50,6 +51,7 @@ body {
   --color-text: var(--text);
   --color-card-bg: var(--card-bg);
   --color-lightGray: var(--lightGray);
+  --color-col-bg: var(--col-bg);
 
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);

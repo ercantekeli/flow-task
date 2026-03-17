@@ -3,8 +3,8 @@
 import React from "react";
 import { usePathname } from "next/navigation";
 
-import Sidebar from "@/components/dashboard/layout/Sidebar";
-import Header from "@/components/dashboard/layout/Header";
+import Sidebar from "@/components/overview/layout/Sidebar";
+import Header from "@/components/overview/layout/Header";
 
 const DashboardLayout = ({
   children,
