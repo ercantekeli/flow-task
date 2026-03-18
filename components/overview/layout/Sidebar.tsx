@@ -36,6 +36,7 @@ const Sidebar = () => {
                 <Link href={item.path}>
                   <IconButton
                     key={index}
+                    className="w-12 h-12"
                     isActive={item.isActive}
                     onClick={() => handleButtonClick(item.id)}
                   >
@@ -51,6 +52,7 @@ const Sidebar = () => {
                 <Link href={item.path}>
                   <IconButton
                     key={index}
+                    className="w-12 h-12"
                     isActive={item.isActive}
                     onClick={() => handleButtonClick(item.id)}
                   >

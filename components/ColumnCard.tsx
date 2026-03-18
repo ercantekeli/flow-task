@@ -2,9 +2,11 @@ import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import { Task } from "@/app/(dashboard)/board/page";
+import TaskCard from "./TaskCard";
 import IconButton from "./IconButton";
 
 function ColumnCard({ data }: { data: Task[] }) {
+  console.log(data);
   return (
     <div className="p-6 bg-col-bg rounded-18 flex flex-col gap-4 border border-border">
       <div className="flex gap-2 items-center justify-between">
@@ -25,13 +27,16 @@ function ColumnCard({ data }: { data: Task[] }) {
             {data.length}
           </div>
         </div>
+        <IconButton
+          onClick={() => console.log("Add task")}
+          className="w-8 h-8 text-text-muted bg-button-bg rounded-lg [&>svg]:w-4 [&>svg]:h-4"
+        >
+          <AiOutlinePlus />
+        </IconButton>
       </div>
-      <IconButton
-        onClick={() => console.log("Add task")}
-        className="bg-red-500/10 text-red-500 hover:bg-red-500/20 h-3 w-3 [&>svg]:w-3 [&>svg]:h-3"
-      >
-        <AiOutlinePlus />
-      </IconButton>
+      {data?.map((task) => (
+        <TaskCard key={task.id} task={task} />
+      ))}
     </div>
   );
 }

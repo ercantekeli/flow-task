@@ -15,7 +15,7 @@ function BarChartComp({ data }: { data: any }) {
       >
         <Bar
           dataKey="uv"
-          fill="#8884d8"
+          fill="#818cf8"
           background={{ fill: "rgba(0, 0, 0, 0.06)", radius: 10 }}
           radius={10}
           name="mea"

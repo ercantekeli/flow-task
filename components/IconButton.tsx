@@ -13,7 +13,7 @@ function IconButton({
 }) {
   return (
     <button
-      className={`cursor-pointer w-12 h-12 [&>svg]:w-6 [&>svg]:h-6 flex justify-center items-center rounded-14  ${isActive ? "bg-primary text-white" : "[&>svg]:text-muted hover:bg-sidebar text-muted"} ${className || ""}`}
+      className={`cursor-pointer [&>svg]:w-6 [&>svg]:h-6 flex justify-center items-center rounded-14  ${isActive ? "bg-primary text-white" : "hover:bg-button-hover-bg text-text-muted hover:text-text"} ${className || ""}`}
       onClick={onClick}
     >
       {children}
