@@ -16,7 +16,7 @@ function TaskCard({ task }: { task: any }) {
   };
 
   return (
-    <div className="p-3 bg-card-bg rounded-14 flex flex-col gap-4 border border-border cursor-pointer hover:bg-button-hover-bg hover:shadow-md hover:-translate-y-1 duration-200 ease-in-out">
+    <div className="p-3 bg-card-bg rounded-14 flex flex-col gap-4 border border-border cursor-pointer hover:bg-card-hover-bg hover:shadow-md hover:-translate-y-1 duration-200 ease-in-out">
       <div className="flex items-center justify-between">
         <div className="text-sm font-semibold">{task.title}</div>
         <div className="text-text-light">...</div>

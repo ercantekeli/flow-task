@@ -27,7 +27,8 @@ body {
 
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
-  --button-hover-bg: rgba(255, 255, 255, 0.7);
+  --card-hover-bg: rgba(255, 255, 255, 0.7);
+  --primary-hover: #6d7af5;
 
   --col-bg: rgba(255, 255, 255, 0.25);
   --text: "#171717";
@@ -54,10 +55,11 @@ body {
   --color-card-bg: var(--card-bg);
   --color-lightGray: var(--lightGray);
   --color-col-bg: var(--col-bg);
+  --color-primary-hover: var(--primary-hover);
 
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);
-  --color-button-hover-bg: var(--button-hover-bg);
+  --color-card-hover-bg: var(--card-hover-bg);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
