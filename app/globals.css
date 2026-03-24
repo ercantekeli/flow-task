@@ -24,6 +24,7 @@ body {
   --secondary: #16a34a;
   --warning: #fbbf24;
   --danger: #dc2626;
+  --primary-dark: #4f46e5;
 
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
@@ -56,6 +57,7 @@ body {
   --color-lightGray: var(--lightGray);
   --color-col-bg: var(--col-bg);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-dark: var(--primary-dark);
 
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);

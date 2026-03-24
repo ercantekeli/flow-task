@@ -36,11 +36,11 @@ function Navbar() {
         </ul>
       </div>
       <div className="flex items-center gap-4">
-        <Button name="Log In" style="white" className="font-medium" />
+        <Button name="Log In" style="white" className="font-semibold text-sm" />
         <Button
           name="Get Started Free"
           style="purple"
-          className="font-medium"
+          className="font-semibold text-sm"
         />
       </div>
     </nav>
