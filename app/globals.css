@@ -37,9 +37,14 @@ body {
   --text-light: rgba(23, 23, 23, 0.25);
   --lightGray: rgba(0, 0, 0, 0.08);
   --sidebar: rgba(250, 244, 242, 0.4);
+  --radius-10: 10px;
   --radius14: 14px;
   --radius18: 18px;
   --radius20: 20px;
+
+  --primary-shadow: 0 4px 14px rgba(129, 140, 248, 0.4);
+
+  --font-size-xxs: 9px;
 }
 
 @theme inline {
@@ -65,7 +70,12 @@ body {
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
+  --radius-10: var(--radius-10);
   --radius-14: var(--radius14);
   --radius-18: var(--radius18);
   --radius-20: var(--radius20);
+
+  --shadow-primary: var(--primary-shadow);
+
+  --text-xxs: var(--font-size-xxs);
 }
