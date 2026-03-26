@@ -1,21 +1,17 @@
 import React from "react";
 import { RxDashboard } from "react-icons/rx";
-import Button from "../Button";
-
-import IconButton from "../IconButton";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+import Button from "../Button";
+import IconButton from "../IconButton";
+import Logo from "../Logo";
 
 function Navbar() {
+  const router = useRouter();
   return (
     <nav className="flex items-center justify-between px-16 py-8 border-b border-border">
-      <div className="flex items-center gap-2.5">
-        <IconButton className="w-12 h-12" isActive>
-          <RxDashboard />
-        </IconButton>
-        <span className="text-2xl font-bold">
-          Flow<span className="text-primary">Task</span>
-        </span>
-      </div>
+      <Logo />
       <div>
         <ul className="flex items-center gap-8 font-medium">
           <li>
@@ -36,7 +32,12 @@ function Navbar() {
         </ul>
       </div>
       <div className="flex items-center gap-4">
-        <Button name="Log In" style="white" className="font-semibold text-sm" />
+        <Button
+          name="Log In"
+          style="white"
+          className="font-semibold text-sm"
+          onClick={() => router.push("/login")}
+        />
         <Button
           name="Get Started Free"
           style="purple"

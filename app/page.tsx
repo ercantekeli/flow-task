@@ -3,9 +3,7 @@
 import Navbar from "@/components/landing/Navbar";
 import Button from "@/components/Button";
 import Card from "@/components/Card";
-import ColumnCard from "@/components/ColumnCard";
 
-import TaskCard from "@/components/TaskCard";
 import Footer from "@/components/landing/Footer";
 
 export default function Home() {
@@ -58,8 +56,8 @@ export default function Home() {
       <Navbar />
       <main>
         <div className="flex items-center justify-center gap-12 pt-16 px-16 pb-12">
-          <div className="flex-1 flex flex-col items-start gap-8">
-            <span className="inline-flex items-center gap-2 text-primary-dark font-semibold text-xs bg-primary/12 px-3 py-1 rounded-18 border border-primary/25">
+          <div className="flex-1 flex flex-col gap-8">
+            <span className="flex items-center self-start gap-2 text-primary-dark font-semibold text-xs bg-primary/12 px-3 py-1 rounded-18 border border-primary/25">
               <div className="h-1.5 w-1.5 bg-primary rounded-full"></div>Task
               management, reimagined
             </span>
@@ -68,9 +66,9 @@ export default function Home() {
               <em className="text-primary not-italic">flow</em> and focus.
             </h1>
             <div>
-              <p className="text-text-muted leading-7 max-w-96 mb-8">
-                FlowTask helps teams organize, track, and complete work — with a
-                clean kanban board, smart deadlines, and zero clutter.
+              <p className="text-text-muted leading-7 mb-8">
+                FlowTask helps teams organize, track, and complete work <br /> —
+                with a clean kanban board, smart deadlines, and zero clutter.
               </p>
               <div className="flex gap-4 ">
                 <Button
@@ -90,7 +88,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="w-96">
+          <div className="">
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <span className="font-bold text-sm">My Board</span>

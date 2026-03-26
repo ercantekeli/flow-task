@@ -11,11 +11,18 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
 :root {
   --background: linear-gradient(
-    to bottom right,
-    rgba(255, 178, 142, 0.68),
-    rgba(170, 112, 224, 0.554)
+    135deg,
+    rgba(255, 178, 142, 0.7) 0%,
+    rgba(170, 112, 224, 0.55) 100%
+  );
+  --login-background: rgba(255, 255, 255, 0.12);
+  --login-r-background: linear-gradient(
+    145deg,
+    rgba(129, 140, 248, 0.3),
+    rgba(170, 112, 224, 0.2)
   );
   --foreground: #171717;
   --sidebar-bg: rgba(250, 244, 242, 0.45);
@@ -28,6 +35,7 @@ body {
 
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
+  --icon-box-bg: rgba(255, 255, 255, 0.5);
   --card-hover-bg: rgba(255, 255, 255, 0.7);
   --primary-hover: #6d7af5;
 
@@ -37,6 +45,7 @@ body {
   --text-light: rgba(23, 23, 23, 0.25);
   --lightGray: rgba(0, 0, 0, 0.08);
   --sidebar: rgba(250, 244, 242, 0.4);
+
   --radius-10: 10px;
   --radius14: 14px;
   --radius18: 18px;
@@ -49,6 +58,8 @@ body {
 
 @theme inline {
   --color-background: var(--background);
+  --color-login-background: var(--login-background);
+  --color-login-r-background: var(--login-r-background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -66,6 +77,7 @@ body {
 
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);
+  --color-icon-box-bg: var(--icon-box-bg);
   --color-card-hover-bg: var(--card-hover-bg);
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
