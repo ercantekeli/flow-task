@@ -4,8 +4,8 @@ import IconBox from "@/components/login/IconBox";
 
 function Login() {
   return (
-    <div className="flex h-full bg-login-background backdrop-blur-xl">
-      <div className="flex-1 bg-login-r-background h-full px-14 py-16 flex flex-col justify-between">
+    <div className="flex h-full bg-login-background w-full">
+      <div className="bg-login-left-bg flex-1 h-full px-14 py-16 flex flex-col justify-between">
         <Logo />
         <div>
           <h2 className="text-7xl font-bold">
@@ -37,7 +37,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <div className="">tü</div>
+      <div className="bg-border">tü</div>
     </div>
   );
 }

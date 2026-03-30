@@ -18,12 +18,13 @@ body {
     rgba(255, 178, 142, 0.7) 0%,
     rgba(170, 112, 224, 0.55) 100%
   );
-  --login-background: rgba(255, 255, 255, 0.12);
-  --login-r-background: linear-gradient(
+  --login-left-bg: linear-gradient(
     145deg,
     rgba(129, 140, 248, 0.3),
     rgba(170, 112, 224, 0.2)
   );
+
+  --login-background: rgba(255, 255, 255, 0.12);
   --foreground: #171717;
   --sidebar-bg: rgba(250, 244, 242, 0.45);
   --card-bg: rgba(255, 255, 255, 0.55);
@@ -32,38 +33,43 @@ body {
   --warning: #fbbf24;
   --danger: #dc2626;
   --primary-dark: #4f46e5;
-
   --border: rgba(255, 255, 255, 0.6);
   --button-bg: rgba(255, 255, 255, 0.4);
   --icon-box-bg: rgba(255, 255, 255, 0.5);
   --card-hover-bg: rgba(255, 255, 255, 0.7);
   --primary-hover: #6d7af5;
-
   --col-bg: rgba(255, 255, 255, 0.25);
-  --text: "#171717";
+  --text: #171717;
   --text-muted: rgba(23, 23, 23, 0.45);
   --text-light: rgba(23, 23, 23, 0.25);
   --lightGray: rgba(0, 0, 0, 0.08);
   --sidebar: rgba(250, 244, 242, 0.4);
 
+  /* RADIUS */
   --radius-10: 10px;
   --radius14: 14px;
   --radius18: 18px;
   --radius20: 20px;
 
+  /* SHADOW */
   --primary-shadow: 0 4px 14px rgba(129, 140, 248, 0.4);
 
+  /* FONTS */
   --font-size-xxs: 9px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-login-background: var(--login-background);
-  --color-login-r-background: var(--login-r-background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@layer utilities {
+  .bg-background {
+    background: var(--background);
+  }
+  .bg-login-left-bg {
+    background: var(--login-left-bg);
+  }
+}
 
+@theme inline {
+  --color-login-background: var(--login-background);
+  --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);
   --color-accent: var(--warning);
@@ -74,7 +80,6 @@ body {
   --color-col-bg: var(--col-bg);
   --color-primary-hover: var(--primary-hover);
   --color-primary-dark: var(--primary-dark);
-
   --color-border: var(--border);
   --color-button-bg: var(--button-bg);
   --color-icon-box-bg: var(--icon-box-bg);
@@ -82,12 +87,20 @@ body {
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
+
+  /* Font */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Radius */
   --radius-10: var(--radius-10);
   --radius-14: var(--radius14);
   --radius-18: var(--radius18);
   --radius-20: var(--radius20);
 
+  /* Shadow */
   --shadow-primary: var(--primary-shadow);
 
+  /* Typography */
   --text-xxs: var(--font-size-xxs);
 }
