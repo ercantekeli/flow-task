@@ -1,6 +1,8 @@
 import React from "react";
 import Logo from "@/components/Logo";
 import IconBox from "@/components/login/IconBox";
+import Button from "@/components/Button";
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
   return (
@@ -37,7 +39,29 @@ function Login() {
           </div>
         </div>
       </div>
-      <div className="bg-border">tü</div>
+      <div className="bg-border px-10 py-12 w-96 flex flex-col">
+        <div className="flex flex-col gap-4">
+          <h3 className="text-2xl font-bold ">Sign in to FlowTask</h3>
+          <p className="text-sm text-text-muted">
+            Don't have an account? Sign up free
+          </p>
+        </div>
+        <div>
+          <Button
+            name="Continue with Google"
+            style="google"
+            className="w-full"
+            icon={<FcGoogle />}
+          />
+        </div>
+        <div className="flex items-center gap-3">
+          <span className="h-px bg-lightGray flex-1" />
+          <span className="text-xs text-text-light font-medium">
+            or continue with email
+          </span>
+          <span className="h-px bg-lightGray flex-1" />
+        </div>
+      </div>
     </div>
   );
 }

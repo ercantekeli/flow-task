@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import Button from "../Button";
-import IconButton from "../IconButton";
 import Logo from "../Logo";
 
 function Navbar() {
