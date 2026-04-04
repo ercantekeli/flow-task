@@ -16,7 +16,7 @@ function Button({
   const styles = {
     white:
       "bg-button-bg text-text border border-border border-solid hover:bg-border",
-    purple: "bg-primary text-white hover:bg-primary-hover",
+    purple: "bg-primary font-semibold text-white hover:bg-primary-hover",
     google:
       "bg-white text-text border border-border border-solid hover:bg-border font-medium",
   };

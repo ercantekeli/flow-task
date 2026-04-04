@@ -3,6 +3,7 @@ import Logo from "@/components/Logo";
 import IconBox from "@/components/login/IconBox";
 import Button from "@/components/Button";
 import { FcGoogle } from "react-icons/fc";
+import Input from "@/components/Input";
 
 function Login() {
   return (
@@ -39,8 +40,8 @@ function Login() {
           </div>
         </div>
       </div>
-      <div className="bg-border px-10 py-12 w-96 flex flex-col">
-        <div className="flex flex-col gap-4">
+      <div className="bg-border px-10 py-12 w-1/3 flex flex-col gap-6">
+        <div className="flex flex-col gap-2">
           <h3 className="text-2xl font-bold ">Sign in to FlowTask</h3>
           <p className="text-sm text-text-muted">
             Don't have an account? Sign up free
@@ -60,6 +61,30 @@ function Login() {
             or continue with email
           </span>
           <span className="h-px bg-lightGray flex-1" />
+        </div>
+        <div className="flex flex-col gap-3.5">
+          <Input
+            type="text"
+            label="EMAIL ADDRESS"
+            name="email"
+            placeholder="you@example.com"
+          />
+          <Input
+            type="password"
+            label="PASSWORD"
+            name="password"
+            placeholder="••••••••"
+          />
+          <div className="text-xs text-primary font-medium cursor-pointer text-right">
+            Forgot your password?
+          </div>
+          <Button name="Sign in →" className="w-full mt-4" style="purple" />
+        </div>
+        <div className="text-sm text-text-muted text-center">
+          New to FlowTask?{" "}
+          <span className="text-primary font-semibold cursor-pointer">
+            Create a free account
+          </span>
         </div>
       </div>
     </div>
