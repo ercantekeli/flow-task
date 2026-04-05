@@ -1,14 +1,15 @@
 import React from "react";
-import Logo from "@/components/Logo";
 import Link from "next/link";
+
+import Logo from "@/components/Logo";
 import IconBox from "@/components/login/IconBox";
 import Button from "@/components/Button";
 import { FcGoogle } from "react-icons/fc";
 import Input from "@/components/Input";
 
-function Login() {
+function Signup() {
   return (
-    <main className="flex bg-auth-background w-full h-screen">
+    <main className="flex h-screen bg-auth-background w-full">
       {/* left */}
       <div className="bg-auth-left-bg flex-1 h-full px-14 py-16 flex flex-col justify-between">
         <Link href="/">
@@ -16,11 +17,10 @@ function Login() {
         </Link>
         <div>
           <h2 className="text-7xl font-bold">
-            Welcome back. <br />
-            Your <span className="text-primary">flow</span> awaits.
+            Start your <span className="text-primary">flow</span> today.
           </h2>
           <p className="text-text-muted mt-4 text-lg">
-            Pick up right where you left off. Your board, your tasks, your pace.
+            Join thousands of teams who manage their work smarter — with clarity, speed, and zero clutter.
           </p>
         </div>
         <div className="flex flex-col gap-6 ">
@@ -47,11 +47,11 @@ function Login() {
       {/* right */}
       <div className="bg-border px-10 py-12 w-1/3 flex flex-col gap-6">
         <div className="flex flex-col gap-2">
-          <h3 className="text-2xl font-bold ">Sign in to FlowTask</h3>
+          <h3 className="text-2xl font-bold ">Create your account</h3>
           <p className="text-sm text-text-muted">
-            Don't have an account?{" "}
-            <Link href="/signup" className="text-primary font-semibold cursor-pointer">
-              Sign up free
+            Already have an account?{" "}
+            <Link href="/login" className="text-primary font-semibold cursor-pointer">
+              Sign in
             </Link>
           </p>
         </div>
@@ -73,6 +73,12 @@ function Login() {
         <div className="flex flex-col gap-3.5">
           <Input
             type="text"
+            label="FULL NAME"
+            name="fullName"
+            placeholder="John Doe"
+          />
+          <Input
+            type="text"
             label="EMAIL ADDRESS"
             name="email"
             placeholder="you@example.com"
@@ -86,17 +92,21 @@ function Login() {
           <div className="text-xs text-primary font-medium cursor-pointer text-right">
             Forgot your password?
           </div>
-          <Button name="Sign in →" className="w-full mt-4" style="purple" />
+          <Button name="Create account →" className="w-full mt-4" style="purple" />
         </div>
         <div className="text-sm text-text-muted text-center">
-          New to FlowTask?{" "}
-          <Link href="/signup" className="text-primary font-semibold cursor-pointer">
-            Create a free account
-          </Link>
+          By creating an account, you agree to our{" "}
+          <span className="text-primary font-semibold cursor-pointer">
+            Terms
+          </span>{" "}
+          and{" "}
+          <span className="text-primary font-semibold cursor-pointer">
+            Privacy Policy
+          </span>
         </div>
       </div>
     </main>
   );
 }
 
-export default Login;
+export default Signup;

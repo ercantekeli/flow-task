@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import Navbar from "@/components/landing/Navbar";
 import Button from "@/components/Button";
@@ -7,6 +8,9 @@ import Card from "@/components/Card";
 import Footer from "@/components/landing/Footer";
 
 export default function Home() {
+
+  const router = useRouter();
+
   const tagColors: { [key: string]: string } = {
     Design: "#fbbf24",
     Dev: "#818cf8",
@@ -46,16 +50,42 @@ export default function Home() {
       column: "Done",
       color: "#16a34a",
     },
+
+
+  ];
+
+  const features = [
+    {
+      icon: "🎯",
+      title: "Focus on what matters",
+      description: "Highlight priority tasks and filter out the noise. Always know what to work on next.",
+    },
+    {
+      icon: "🤝",
+      title: "Built for teams",
+      description: "Assign tasks to teammates, leave comments, and track progress together in real time.",
+    },
+    {
+      icon: "🔔",
+      title: "Never miss a deadline",
+      description: "Smart reminders and overdue alerts keep your team accountable and on schedule.",
+    },
+    {
+      icon: "🌙",
+      title: "Works the way you do",
+      description: "List, kanban, or calendar — switch between views and work the way you think best.",
+    },
   ];
 
   const todoTasks = mockTasks.filter((t) => t.column === "To Do");
   const progressTasks = mockTasks.filter((t) => t.column === "In Progress");
   const doneTasks = mockTasks.filter((t) => t.column === "Done");
+
   return (
     <>
       <Navbar />
-      <main>
-        <div className="flex items-center justify-center gap-12 pt-16 px-16 pb-12">
+      <main className="py-36">
+        <div className="flex items-center justify-center gap-12 pt-16 pb-12 px-16">
           <div className="flex-1 flex flex-col gap-8">
             <span className="flex items-center self-start gap-2 text-primary-dark font-semibold text-xs bg-primary/12 px-3 py-1 rounded-18 border border-primary/25">
               <div className="h-1.5 w-1.5 bg-primary rounded-full"></div>Task
@@ -75,11 +105,13 @@ export default function Home() {
                   name="Start for free →"
                   style="purple"
                   className="font-semibold py-2.5 px-6"
+                  onClick={() => router.push("/signup")}
                 />
                 <Button
                   name="See how it works"
                   style="white"
                   className="font-semibold py-2.5 px-6"
+                  onClick={() => router.push("/#features")}
                 />
               </div>
 
@@ -172,6 +204,23 @@ export default function Home() {
             </Card>
           </div>
         </div>
+        <section id="features" className="px-16">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold">
+              Everything you need to <em className="text-primary not-italic">flow</em>
+            </h2>
+            <p className="text-text-muted mt-4">Simple tools, powerful results.</p>
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            {features.map((f, i) => (
+              <Card key={i}>
+                <div className="text-3xl mb-4">{f.icon}</div>
+                <h3 className="font-bold text-lg mb-2">{f.title}</h3>
+                <p className="text-text-muted text-sm leading-6">{f.description}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </>
