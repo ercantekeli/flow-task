@@ -24,7 +24,7 @@ function Button({
   return (
     <button
       className={`flex items-center justify-center gap-2 rounded-xl px-6 py-3 cursor-pointer duration-200 ease-in-out ${styles[style]} ${className}`}
-      onClick={onClick}
+      onClick={() => onClick && onClick()}
     >
       {icon && <span className="text-lg">{icon}</span>}
       {name}

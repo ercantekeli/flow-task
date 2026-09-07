@@ -28,6 +28,9 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen`}
         cz-shortcut-listen="true"
+        style={{
+          position: "relative",
+        }}
       >
         {children}
       </body>
