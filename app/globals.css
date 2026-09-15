@@ -42,7 +42,10 @@ body {
   --text-muted: rgba(23, 23, 23, 0.45);
   --text-light: rgba(23, 23, 23, 0.25);
   --lightGray: rgba(0, 0, 0, 0.08);
+  --light-bg: rgba(0, 0, 0, 0.06);
   --sidebar: rgba(250, 244, 242, 0.4);
+  --modal-bg: rgba(255, 255, 255, 0.92);
+  --modal-overlay-bg: rgba(0, 0, 0, 0.25);
 
   /* RADIUS */
   --radius-10: 10px;
@@ -55,6 +58,7 @@ body {
 
   /* FONTS */
   --font-size-xxs: 9px;
+  --font-size-11: 11px;
 }
 
 @layer utilities {
@@ -86,6 +90,9 @@ body {
   --color-text-muted: var(--text-muted);
   --color-text-light: var(--text-light);
   --color-sidebar: var(--sidebar-bg);
+  --color-light-bg: var(--light-bg);
+  --color-modal-bg: var(--modal-bg);
+  --color-modal-overlay-bg: var(--modal-overlay-bg);
 
   /* Font */
   --font-sans: var(--font-geist-sans);
@@ -102,4 +109,5 @@ body {
 
   /* Typography */
   --text-xxs: var(--font-size-xxs);
+  --text-11: var(--font-size-11);
 }

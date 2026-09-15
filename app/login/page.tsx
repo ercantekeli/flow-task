@@ -50,7 +50,10 @@ function Login() {
           <h3 className="text-2xl font-bold ">Sign in to FlowTask</h3>
           <p className="text-sm text-text-muted">
             Don't have an account?{" "}
-            <Link href="/signup" className="text-primary font-semibold cursor-pointer">
+            <Link
+              href="/signup"
+              className="text-primary font-semibold cursor-pointer"
+            >
               Sign up free
             </Link>
           </p>
@@ -74,15 +77,9 @@ function Login() {
           <Input
             type="text"
             label="EMAIL ADDRESS"
-            name="email"
             placeholder="you@example.com"
           />
-          <Input
-            type="password"
-            label="PASSWORD"
-            name="password"
-            placeholder="••••••••"
-          />
+          <Input type="password" label="PASSWORD" placeholder="••••••••" />
           <div className="text-xs text-primary font-medium cursor-pointer text-right">
             Forgot your password?
           </div>
@@ -90,7 +87,10 @@ function Login() {
         </div>
         <div className="text-sm text-text-muted text-center">
           New to FlowTask?{" "}
-          <Link href="/signup" className="text-primary font-semibold cursor-pointer">
+          <Link
+            href="/signup"
+            className="text-primary font-semibold cursor-pointer"
+          >
             Create a free account
           </Link>
         </div>

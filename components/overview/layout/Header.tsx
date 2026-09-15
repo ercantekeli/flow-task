@@ -4,6 +4,12 @@ import { IoIosSearch } from "react-icons/io";
 
 import Button from "@/components/Button";
 import Modal from "@/components/Modal";
+import Input from "@/components/Input";
+import Textarea from "@/components/Textarea";
+import Select from "@/components/Select";
+import DateInput from "@/components/DateInput";
+import { TagSelect } from "@/components/TagSelect";
+import { PrioritySelect } from "@/components/PrioritySelect";
 
 const Header = ({
   title = "",
@@ -13,6 +19,11 @@ const Header = ({
   subtitle: string;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const columnOptions = [
+    { value: "option1", label: "To Do" },
+    { value: "option2", label: "In Progress" },
+    { value: "option3", label: "Done" },
+  ];
   return (
     <>
       <div className="flex items-center justify-between">
@@ -30,7 +41,39 @@ const Header = ({
           />
         </div>
       </div>
-      {isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)} title="Add New Task">
+          <div>
+            <Input
+              type="text"
+              placeholder="e.g. Design landing page…"
+              label="TASK NAME"
+            />
+            <Textarea placeholder="Optional description…" label="DESCRIPTION" />
+
+            <div className="grid grid-cols-2 gap-4">
+              <Select label="COLUMN" options={columnOptions} />
+              <DateInput label="DUE DATE" placeholder="Select a date" />
+            </div>
+            <TagSelect />
+            <PrioritySelect />
+            <div className="flex items-center justify-end gap-4 mt-6">
+              <Button
+                name="Cancel"
+                style="white"
+                onClick={() => setIsModalOpen(false)}
+              />
+
+              <Button
+                name="Add Task"
+                style="purple"
+                className=""
+                icon={<AiOutlinePlus />}
+              />
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

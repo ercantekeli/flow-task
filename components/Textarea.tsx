@@ -1,13 +1,11 @@
 import React, { useId } from "react";
 
-function Input({
-  label,
-  type,
+function Textarea({
   placeholder,
+  label,
 }: {
+  placeholder: string;
   label: string;
-  type?: "password" | "text" | "email";
-  placeholder?: string;
 }) {
   const generatedId = useId();
   return (
@@ -18,14 +16,14 @@ function Input({
       >
         {label}
       </label>
-      <input
+      <textarea
+        rows={2}
         id={generatedId}
-        type={type}
         placeholder={placeholder}
-        className="bg-card-hover-bg w-full px-4 py-3 rounded-xl text-text text-sm border outline-0 border-lightGray focus:bg-white focus:border-primary placeholder:text-text-light transition-colors "
+        className="bg-card-hover-bg w-full px-4 py-3 rounded-xl text-text text-sm border outline-0 border-lightGray focus:bg-white focus:border-primary placeholder:text-text-light transition-colors resize-none"
       />
     </div>
   );
 }
 
-export default Input;
+export default Textarea;
