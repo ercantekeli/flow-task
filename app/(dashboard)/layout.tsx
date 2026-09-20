@@ -32,7 +32,7 @@ const DashboardLayout = ({
   return (
     <div className="flex w-full h-screen p-8 gap-8 overflow-hidden">
       <Sidebar />
-      <main className="w-full h-full flex flex-col gap-8 overflow-y-auto pb-8">
+      <main className="w-full h-full flex flex-col gap-8">
         <Header
           title={headerContent[pathname]?.title || ""}
           subtitle={headerContent[pathname]?.subtitle || ""}

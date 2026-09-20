@@ -5,26 +5,36 @@ import { Task } from "@/app/(dashboard)/board/page";
 import TaskCard from "./TaskCard";
 import IconButton from "./IconButton";
 
-function ColumnCard({ data }: { data: Task[] }) {
-  console.log(data);
+function ColumnCard({
+  data,
+  children,
+}: {
+  data: {
+    columnId: number;
+    columnName: string;
+    color: string;
+    totalTasks: number;
+  };
+  children: React.ReactNode;
+}) {
   return (
-    <div className="p-6 bg-col-bg rounded-18 flex flex-col gap-4 border border-border">
+    <div className="flex flex-col gap-4 p-6 bg-col-bg rounded-18 border border-border h-full overflow-y-auto">
       <div className="flex gap-2 items-center justify-between">
         <div className="flex gap-2 items-center">
           <div
             className="w-3 h-3 rounded-full"
-            style={{ backgroundColor: data[0]?.color }}
+            style={{ backgroundColor: data?.color }}
           />
-          <div className="text-base font-semibold">{data[0]?.column}</div>
+          <div className="text-base font-semibold">{data?.columnName}</div>
 
           <div
             style={{
-              backgroundColor: `${data[0]?.color}20`,
-              color: data[0]?.color,
+              backgroundColor: `${data?.color}20`,
+              color: data?.color,
             }}
             className="text-sm h-6 w-6 rounded-full font-semibold flex items-center justify-center"
           >
-            {data.length}
+            {data.totalTasks}
           </div>
         </div>
         <IconButton
@@ -34,9 +44,7 @@ function ColumnCard({ data }: { data: Task[] }) {
           <AiOutlinePlus />
         </IconButton>
       </div>
-      {data?.map((task) => (
-        <TaskCard key={task.id} task={task} />
-      ))}
+      {children}
     </div>
   );
 }
