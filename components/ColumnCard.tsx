@@ -1,8 +1,6 @@
 import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
-import { Task } from "@/app/(dashboard)/board/page";
-import TaskCard from "./TaskCard";
 import IconButton from "./IconButton";
 
 function ColumnCard({
@@ -10,8 +8,8 @@ function ColumnCard({
   children,
 }: {
   data: {
-    columnId: number;
-    columnName: string;
+    id: number;
+    column_name: string;
     color: string;
     totalTasks: number;
   };
@@ -25,7 +23,7 @@ function ColumnCard({
             className="w-3 h-3 rounded-full"
             style={{ backgroundColor: data?.color }}
           />
-          <div className="text-base font-semibold">{data?.columnName}</div>
+          <div className="text-base font-semibold">{data?.column_name}</div>
 
           <div
             style={{

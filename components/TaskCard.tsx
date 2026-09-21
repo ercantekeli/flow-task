@@ -23,7 +23,7 @@ function TaskCard({ task }: { task: any }) {
       </div>
       <div className="text-xs text-text-muted">{task.description}</div>
       <div className="flex gap-2">
-        {task.tags.map((tag: string, idx: number) => (
+        {task?.tags?.map((tag: string, idx: number) => (
           <div
             key={idx}
             style={{
@@ -43,12 +43,12 @@ function TaskCard({ task }: { task: any }) {
         </div>
         <div
           style={{
-            color: priorityColors[task.priority],
-            backgroundColor: priorityColors[task.priority] + "20",
+            color: priorityColors[task?.priority],
+            backgroundColor: priorityColors[task?.priority] + "20",
           }}
           className="text-xs text-white rounded-full px-2 py-0.5 font-bold"
         >
-          {task.priority}
+          {task?.priority}
         </div>
       </div>
     </div>

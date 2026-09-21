@@ -20,7 +20,8 @@ function Signup() {
             Start your <span className="text-primary">flow</span> today.
           </h2>
           <p className="text-text-muted mt-4 text-lg">
-            Join thousands of teams who manage their work smarter — with clarity, speed, and zero clutter.
+            Join thousands of teams who manage their work smarter — with
+            clarity, speed, and zero clutter.
           </p>
         </div>
         <div className="flex flex-col gap-6 ">
@@ -50,7 +51,10 @@ function Signup() {
           <h3 className="text-2xl font-bold ">Create your account</h3>
           <p className="text-sm text-text-muted">
             Already have an account?{" "}
-            <Link href="/login" className="text-primary font-semibold cursor-pointer">
+            <Link
+              href="/login"
+              className="text-primary font-semibold cursor-pointer"
+            >
               Sign in
             </Link>
           </p>
@@ -71,28 +75,21 @@ function Signup() {
           <span className="h-px bg-lightGray flex-1" />
         </div>
         <div className="flex flex-col gap-3.5">
-          <Input
-            type="text"
-            label="FULL NAME"
-            name="fullName"
-            placeholder="John Doe"
-          />
+          <Input type="text" label="FULL NAME" placeholder="John Doe" />
           <Input
             type="text"
             label="EMAIL ADDRESS"
-            name="email"
             placeholder="you@example.com"
           />
-          <Input
-            type="password"
-            label="PASSWORD"
-            name="password"
-            placeholder="••••••••"
-          />
+          <Input type="password" label="PASSWORD" placeholder="••••••••" />
           <div className="text-xs text-primary font-medium cursor-pointer text-right">
             Forgot your password?
           </div>
-          <Button name="Create account →" className="w-full mt-4" style="purple" />
+          <Button
+            name="Create account →"
+            className="w-full mt-4"
+            style="purple"
+          />
         </div>
         <div className="text-sm text-text-muted text-center">
           By creating an account, you agree to our{" "}

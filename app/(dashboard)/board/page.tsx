@@ -1,5 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
+
 import {
   DragDropContext,
   Draggable,
@@ -19,6 +21,7 @@ export interface Task {
   columnName: string;
   columnId: number;
   color: string;
+  order: number;
   tasks: {
     id: number;
     title: string;
@@ -32,11 +35,33 @@ export interface Task {
   }[];
 }
 const Board = () => {
+  const fetchColumns = async () => {
+    const { data, error } = await supabase.from("columns").select(`
+    *,
+    tasks (*)
+  `);
+
+    if (error) {
+      console.error("Veri çekme hatası:", error);
+      return;
+    }
+    setApiData(data);
+
+    console.log("Gelen Sütunlar:", data);
+  };
+
+  useEffect(() => {
+    fetchColumns();
+  }, []);
+
+  const [apiData, setApiData] = useState([]);
+
   const [mockTasks, setMockTasks] = useState([
     {
       columnName: "To Do",
       columnId: 1,
       color: "#94a3b8",
+      order: 1,
       tasks: [
         {
           id: 1,
@@ -79,6 +104,7 @@ const Board = () => {
       columnName: "In Progress",
       columnId: 2,
       color: "#818cf8",
+      order: 2,
       tasks: [
         {
           id: 4,
@@ -108,6 +134,7 @@ const Board = () => {
       columnName: "Done",
       columnId: 3,
       color: "#16a34a",
+      order: 3,
       tasks: [
         {
           id: 6,
@@ -161,19 +188,19 @@ const Board = () => {
   return (
     <div className="grid grid-cols-3 gap-4 h-full overflow-hidden">
       <DragDropContext onDragEnd={(result) => handleDragDrop(result)}>
-        {mockTasks?.map((column) => {
-          const { columnId, columnName, color } = column;
+        {apiData?.map((column) => {
+          const { id, column_name, color } = column;
           return (
             <ColumnCard
-              key={column.columnId}
+              key={id}
               data={{
-                columnId,
-                columnName,
+                id,
+                column_name,
                 color,
-                totalTasks: column.tasks.length,
+                totalTasks: column?.tasks?.length,
               }}
             >
-              <Droppable key={columnId} droppableId={String(columnId)}>
+              <Droppable key={id} droppableId={String(id)}>
                 {(provided, snapshot) => (
                   <div
                     ref={provided.innerRef}
@@ -192,7 +219,7 @@ const Board = () => {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <TaskCard key={task.id} task={task} />
+                            <TaskCard key={task?.id} task={task} />
                           </div>
                         )}
                       </Draggable>
