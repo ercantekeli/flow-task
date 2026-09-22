@@ -18,22 +18,29 @@ type Column = "To Do" | "In Progress" | "Done";
 type Color = "#94a3b8" | "#818cf8" | "#16a34a";
 
 export interface Task {
-  columnName: string;
-  columnId: number;
+  id: number;
+  created_at: string;
+  column_name: string;
   color: string;
   order: number;
-  tasks: {
+  tasks: Array<{
     id: number;
+    tags: Array<{
+      name: string;
+      color: string;
+    }>;
+    order: number;
     title: string;
-    description?: string;
-    tags: Tag[];
-    priority: Priority;
-    due: string;
-    column: Column;
-    isOverdue?: boolean;
-    color?: Color;
-  }[];
+    due_date: string;
+    priority: string;
+    column_id: number;
+    isOverdue: boolean;
+    created_at: string;
+    description: string;
+  }>;
 }
+export type TaskList = Task[];
+
 const Board = () => {
   const fetchColumns = async () => {
     const { data, error } = await supabase.from("columns").select(`
@@ -54,7 +61,7 @@ const Board = () => {
     fetchColumns();
   }, []);
 
-  const [apiData, setApiData] = useState([]);
+  const [apiData, setApiData] = useState<TaskList | null>(null);
 
   const [mockTasks, setMockTasks] = useState([
     {
@@ -188,7 +195,7 @@ const Board = () => {
   return (
     <div className="grid grid-cols-3 gap-4 h-full overflow-hidden">
       <DragDropContext onDragEnd={(result) => handleDragDrop(result)}>
-        {apiData?.map((column) => {
+        {apiData?.map((column: Task) => {
           const { id, column_name, color } = column;
           return (
             <ColumnCard
