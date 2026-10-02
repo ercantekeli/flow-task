@@ -1,5 +1,8 @@
 import React from "react";
+
+import { formatDate } from "@/utils/formatDate";
 import { AiOutlineCalendar } from "react-icons/ai";
+import { isOverdue } from "@/utils/isOverdue";
 
 function TaskCard({ task }: { task: any }) {
   const tagColors: { [key: string]: string } = {
@@ -30,7 +33,7 @@ function TaskCard({ task }: { task: any }) {
   }
 
   return (
-    <div className="p-3 bg-card-bg rounded-14 flex flex-col gap-4 border border-border cursor-pointer hover:bg-card-hover-bg hover:shadow-md hover:translate-y-1 duration-200 ease-in-out">
+    <div className="p-3 min-h-36 bg-card-bg rounded-14 flex flex-col justify-between border border-border cursor-pointer hover:bg-card-hover-bg hover:shadow-md hover:translate-y-1 duration-200 ease-in-out">
       <div className="flex items-center justify-between">
         <div className="text-sm font-semibold">{task?.title}</div>
         <div className="text-text-light">...</div>
@@ -55,15 +58,14 @@ function TaskCard({ task }: { task: any }) {
       <div className="flex items-center justify-between">
         <div
           style={{
-            color: getTaskDateDetails(task?.due_date)?.isOverdue
+            color: isOverdue(task?.due_date)
               ? "rgba(23, 23, 23, 0.25)"
               : "#dc2626",
           }}
           className="flex items-center gap-1 text-xs text-text-light [&>svg]:w-3.5 [&>svg]:h-3.5"
         >
           <AiOutlineCalendar />
-          {getTaskDateDetails(task?.due_date)?.formattedDate}{" "}
-          {getTaskDateDetails(task?.due_date)?.isOverdue || "⚠️"}
+          {formatDate(task?.due_date)} {isOverdue(task?.due_date) || "⚠️"}
         </div>
         <div
           style={{

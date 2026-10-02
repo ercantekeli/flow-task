@@ -8,7 +8,6 @@ import Card from "@/components/Card";
 import Footer from "@/components/landing/Footer";
 
 export default function Home() {
-
   const router = useRouter();
 
   const tagColors: { [key: string]: string } = {
@@ -50,30 +49,32 @@ export default function Home() {
       column: "Done",
       color: "#16a34a",
     },
-
-
   ];
 
   const features = [
     {
       icon: "🎯",
       title: "Focus on what matters",
-      description: "Highlight priority tasks and filter out the noise. Always know what to work on next.",
+      description:
+        "Highlight priority tasks and filter out the noise. Always know what to work on next.",
     },
     {
       icon: "🤝",
       title: "Built for teams",
-      description: "Assign tasks to teammates, leave comments, and track progress together in real time.",
+      description:
+        "Assign tasks to teammates, leave comments, and track progress together in real time.",
     },
     {
       icon: "🔔",
       title: "Never miss a deadline",
-      description: "Smart reminders and overdue alerts keep your team accountable and on schedule.",
+      description:
+        "Smart reminders and overdue alerts keep your team accountable and on schedule.",
     },
     {
       icon: "🌙",
       title: "Works the way you do",
-      description: "List, kanban, or calendar — switch between views and work the way you think best.",
+      description:
+        "List, kanban, or calendar — switch between views and work the way you think best.",
     },
   ];
 
@@ -207,16 +208,21 @@ export default function Home() {
         <section id="features" className="px-16">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold">
-              Everything you need to <em className="text-primary not-italic">flow</em>
+              Everything you need to{" "}
+              <em className="text-primary not-italic">flow</em>
             </h2>
-            <p className="text-text-muted mt-4">Simple tools, powerful results.</p>
+            <p className="text-text-muted mt-4">
+              Simple tools, powerful results.
+            </p>
           </div>
           <div className="grid grid-cols-2 gap-6">
             {features.map((f, i) => (
               <Card key={i}>
                 <div className="text-3xl mb-4">{f.icon}</div>
                 <h3 className="font-bold text-lg mb-2">{f.title}</h3>
-                <p className="text-text-muted text-sm leading-6">{f.description}</p>
+                <p className="text-text-muted text-sm leading-6">
+                  {f.description}
+                </p>
               </Card>
             ))}
           </div>

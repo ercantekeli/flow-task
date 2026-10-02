@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
+import { getAllTasks } from "@/services/boardService";
 
 import {
   DragDropContext,
@@ -11,57 +12,19 @@ import {
 
 import ColumnCard from "@/components/ColumnCard";
 import TaskCard from "@/components/TaskCard";
+import { useFetch } from "@/hooks/useFetch";
+import { TaskContext } from "@/context/taskContext";
 
 type Tag = "Design" | "Dev" | "Review" | "Bug";
 type Priority = "HIGH" | "MEDIUM" | "LOW";
 type Column = "To Do" | "In Progress" | "Done";
 type Color = "#94a3b8" | "#818cf8" | "#16a34a";
 
-export interface Task {
-  id: number;
-  created_at: string;
-  column_name: string;
-  color: string;
-  order: number;
-  tasks: Array<{
-    id: number;
-    tags: Array<{
-      name: string;
-      color: string;
-    }>;
-    order: number;
-    title: string;
-    due_date: string;
-    priority: string;
-    column_id: number;
-    isOverdue: boolean;
-    created_at: string;
-    description: string;
-  }>;
-}
-export type TaskList = Task[];
-
 const Board = () => {
-  const fetchColumns = async () => {
-    const { data, error } = await supabase.from("columns").select(`
-    *,
-    tasks (*)
-  `);
+  useFetch(getAllTasks);
 
-    if (error) {
-      console.error("Veri çekme hatası:", error);
-      return;
-    }
-    setApiData(data);
-
-    console.log("Gelen Sütunlar:", data);
-  };
-
-  useEffect(() => {
-    fetchColumns();
-  }, []);
-
-  const [apiData, setApiData] = useState<TaskList | null>(null);
+  const [apiData, setApiData] = useState<null>(null);
+  const { allTasks } = useContext(TaskContext);
 
   const [mockTasks, setMockTasks] = useState([
     {
@@ -171,14 +134,14 @@ const Board = () => {
 
   const handleDragDrop = (result: DropResult) => {
     if (!result.destination) return;
-    const copyTasks = structuredClone(mockTasks);
+    const copyTasks = structuredClone(apiData);
 
     const sourceColumn = copyTasks?.find(
-      (column) => column.columnId === Number(result?.source?.droppableId),
+      (column) => column?.id === Number(result?.source?.droppableId),
     );
 
     const destinationColumn = copyTasks?.find(
-      (column) => column.columnId === Number(result?.destination?.droppableId),
+      (column) => column?.id === Number(result?.destination?.droppableId),
     );
 
     if (sourceColumn && destinationColumn) {
@@ -188,14 +151,14 @@ const Board = () => {
         0,
         movedTask,
       );
-      setMockTasks(copyTasks);
+      setApiData(copyTasks);
     }
   };
 
   return (
     <div className="grid grid-cols-3 gap-4 h-full overflow-hidden">
       <DragDropContext onDragEnd={(result) => handleDragDrop(result)}>
-        {apiData?.map((column: Task) => {
+        {allTasks?.map((column: Task) => {
           const { id, column_name, color } = column;
           return (
             <ColumnCard

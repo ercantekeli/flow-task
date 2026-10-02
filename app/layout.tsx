@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
+import TaskContextProvider from "@/context/taskContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +34,10 @@ export default function RootLayout({
           position: "relative",
         }}
       >
-        {children}
+        <TaskContextProvider>
+          <ToastContainer />
+          {children}
+        </TaskContextProvider>
       </body>
     </html>
   );

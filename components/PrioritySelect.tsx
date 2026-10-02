@@ -1,40 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, forwardRef } from "react";
 
-export function PrioritySelect() {
-  const priorities = [
-    { id: 1, name: "🔴 High", color: "#dc2626" },
-    { id: 2, name: "🟡 Medium", color: "#fbbf24" },
-    { id: 3, name: "🟢 Low", color: "#16a34a" },
-  ];
-  const [selectedPriority, setSelectedPriority] = useState<number | null>(null);
+const priorities = [
+  { id: 1, label: "🔴 High", value: "HIGH", color: "#dc2626" },
+  { id: 2, label: "🟡 Medium", value: "MEDIUM", color: "#fbbf24" },
+  { id: 3, label: "🟢 Low", value: "LOW", color: "#16a34a" },
+];
 
-  const handlePriorityClick = (id: number) => {
-    setSelectedPriority(id);
-  };
-
+const PrioritySelect = forwardRef<HTMLInputElement>(({ ...props }, ref) => {
   return (
     <div>
       <label className="text-xs font-semibold text-text-muted">PRIORITY</label>
       <div className="grid grid-cols-3 items-center gap-2 mt-1 flex-wrap">
         {priorities.map((priority) => (
-          <span
-            onClick={() => handlePriorityClick(priority.id)}
-            key={priority.id}
+          <label
+            key={`priority-${priority.id}`}
             style={{
               color: priority.color,
               backgroundColor: `${priority.color}20`,
-              opacity: selectedPriority === priority.id ? 1 : 0.5,
-              border:
-                selectedPriority === priority.id
-                  ? `1px solid ${priority.color}`
-                  : "1px solid transparent",
             }}
-            className="font-semibold p-2 rounded-10 cursor-pointer text-center text-11"
+            className="font-semibold p-2 rounded-10 cursor-pointer opacity-50 has-checked:opacity-100  text-center text-11 border border-solid border-transparent has-checked:border has-checked:border-solid has-checked:border-current"
+            htmlFor={`priority-${priority.id}`}
           >
-            {priority.name}
-          </span>
+            <input
+              ref={ref}
+              {...props}
+              type="radio"
+              value={priority.value}
+              id={`priority-${priority.id}`}
+              hidden
+            />
+            {priority.label}
+          </label>
         ))}
       </div>
     </div>
   );
-}
+});
+
+PrioritySelect.displayName = "PrioritySelect";
+export default PrioritySelect;
