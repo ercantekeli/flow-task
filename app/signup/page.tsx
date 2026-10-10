@@ -1,13 +1,42 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { signUpNewUser } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 import Logo from "@/components/Logo";
 import IconBox from "@/components/login/IconBox";
 import Button from "@/components/Button";
 import { FcGoogle } from "react-icons/fc";
 import Input from "@/components/Input";
+import { toast } from "react-toastify";
 
 function Signup() {
+  const {
+    register,
+    watch,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const router = useRouter();
+
+  const handleFormSubmit = handleSubmit(async (info) => {
+    const { data, error } = await signUpNewUser(info);
+    if (error) {
+      toast.error(error.message);
+    }
+    if (data) {
+      toast.success("Successfully signed up!");
+      router.push("/overview");
+    }
+  });
+
+  watch((data) => {
+    console.log(data);
+  });
+
   return (
     <main className="flex h-screen bg-auth-background w-full">
       {/* left */}
@@ -62,7 +91,7 @@ function Signup() {
         <div>
           <Button
             name="Continue with Google"
-            style="google"
+            variant="google"
             className="w-full"
             icon={<FcGoogle />}
           />
@@ -74,23 +103,35 @@ function Signup() {
           </span>
           <span className="h-px bg-lightGray flex-1" />
         </div>
-        <div className="flex flex-col gap-3.5">
-          <Input type="text" label="FULL NAME" placeholder="John Doe" />
+        <form onSubmit={handleFormSubmit} className="flex flex-col gap-3.5">
+          <Input
+            type="text"
+            label="FULL NAME"
+            {...register("full_name", { required: true })}
+            placeholder="John Doe"
+          />
           <Input
             type="text"
             label="EMAIL ADDRESS"
+            {...register("email", { required: true })}
             placeholder="you@example.com"
           />
-          <Input type="password" label="PASSWORD" placeholder="••••••••" />
+          <Input
+            type="password"
+            label="PASSWORD"
+            {...register("password", { required: true })}
+            placeholder="••••••••"
+          />
           <div className="text-xs text-primary font-medium cursor-pointer text-right">
             Forgot your password?
           </div>
           <Button
             name="Create account →"
             className="w-full mt-4"
-            style="purple"
+            variant="purple"
+            onClick={handleFormSubmit}
           />
-        </div>
+        </form>
         <div className="text-sm text-text-muted text-center">
           By creating an account, you agree to our{" "}
           <span className="text-primary font-semibold cursor-pointer">

@@ -104,13 +104,13 @@ export default function Home() {
               <div className="flex gap-4 ">
                 <Button
                   name="Start for free →"
-                  style="purple"
+                  variant="purple"
                   className="font-semibold py-2.5 px-6"
                   onClick={() => router.push("/signup")}
                 />
                 <Button
                   name="See how it works"
-                  style="white"
+                  variant="white"
                   className="font-semibold py-2.5 px-6"
                   onClick={() => router.push("/#features")}
                 />

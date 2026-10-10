@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import TaskContextProvider from "@/context/taskContext";
-
+import { AuthContextProvider } from "@/context/authContext";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,10 +34,12 @@ export default function RootLayout({
           position: "relative",
         }}
       >
-        <TaskContextProvider>
-          <ToastContainer />
-          {children}
-        </TaskContextProvider>
+        <AuthContextProvider>
+          <TaskContextProvider>
+            <ToastContainer />
+            {children}
+          </TaskContextProvider>
+        </AuthContextProvider>
       </body>
     </html>
   );

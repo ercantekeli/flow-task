@@ -17,7 +17,10 @@ function Navbar() {
         <div>
           <ul className="flex items-center gap-8 font-medium">
             <li>
-              <Link href="#features" className="text-text-muted hover:text-text">
+              <Link
+                href="#features"
+                className="text-text-muted hover:text-text"
+              >
                 Features
               </Link>
             </li>
@@ -37,13 +40,13 @@ function Navbar() {
       <div className="flex items-center gap-4">
         <Button
           name="Log In"
-          style="white"
+          variant="white"
           className="font-semibold text-sm"
           onClick={() => router.push("/login")}
         />
         <Button
           name="Get Started Free"
-          style="purple"
+          variant="purple"
           className="font-semibold text-sm"
           onClick={() => router.push("/signup")}
         />

@@ -1,7 +1,8 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { usePathname } from "next/navigation";
+import { AuthContext } from "@/context/authContext";
 
 import Sidebar from "@/components/overview/layout/Sidebar";
 import Header from "@/components/overview/layout/Header";
@@ -12,11 +13,15 @@ const DashboardLayout = ({
   children: React.ReactNode;
 }>) => {
   const pathname = usePathname();
+  const { user } = useContext(AuthContext);
 
   const headerContent: { [key: string]: { title: string; subtitle: string } } =
     {
       "/overview": {
-        title: "Good morning, Ercan 👋",
+        title:
+          "Good morning, " +
+          (user?.full_name ? user.full_name.split(" ")[0] : "there") +
+          " 👋",
         subtitle: "Here's what's happening with your projects today.",
       },
       "/board": {

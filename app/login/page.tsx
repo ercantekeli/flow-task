@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Logo from "@/components/Logo";
 import Link from "next/link";
@@ -5,8 +6,26 @@ import IconBox from "@/components/login/IconBox";
 import Button from "@/components/Button";
 import { FcGoogle } from "react-icons/fc";
 import Input from "@/components/Input";
+import { signInWithEmail } from "@/services/authService";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 function Login() {
+  const { register, handleSubmit } = useForm();
+  const router = useRouter();
+
+  const handleSignIn = async (info: any) => {
+    const { data, error } = await signInWithEmail(info);
+    if (error) {
+      toast.error(error.message);
+    }
+    if (data) {
+      toast.success("Successfully signed in!");
+      router.push("/overview");
+    }
+  };
+
   return (
     <main className="flex bg-auth-background w-full h-screen">
       {/* left */}
@@ -61,7 +80,7 @@ function Login() {
         <div>
           <Button
             name="Continue with Google"
-            style="google"
+            variant="google"
             className="w-full"
             icon={<FcGoogle />}
           />
@@ -73,18 +92,29 @@ function Login() {
           </span>
           <span className="h-px bg-lightGray flex-1" />
         </div>
-        <div className="flex flex-col gap-3.5">
+        <form className="flex flex-col gap-3.5">
           <Input
+            {...register("email")}
             type="text"
             label="EMAIL ADDRESS"
             placeholder="you@example.com"
           />
-          <Input type="password" label="PASSWORD" placeholder="••••••••" />
+          <Input
+            {...register("password")}
+            type="password"
+            label="PASSWORD"
+            placeholder="••••••••"
+          />
           <div className="text-xs text-primary font-medium cursor-pointer text-right">
             Forgot your password?
           </div>
-          <Button name="Sign in →" className="w-full mt-4" style="purple" />
-        </div>
+          <Button
+            onClick={handleSubmit(handleSignIn)}
+            name="Sign in →"
+            className="w-full mt-4"
+            variant="purple"
+          />
+        </form>
         <div className="text-sm text-text-muted text-center">
           New to FlowTask?{" "}
           <Link
