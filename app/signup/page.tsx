@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { signUpNewUser } from "@/services/authService";
+import { signUpNewUser, signInWithGoogle } from "@/services/authService";
 import { useRouter } from "next/navigation";
 
 import Logo from "@/components/Logo";
@@ -14,15 +14,10 @@ import Input from "@/components/Input";
 import { toast } from "react-toastify";
 
 function Signup() {
-  const {
-    register,
-    watch,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const router = useRouter();
 
-  const handleFormSubmit = handleSubmit(async (info) => {
+  const handleSignUp = async (info: any) => {
     const { data, error } = await signUpNewUser(info);
     if (error) {
       toast.error(error.message);
@@ -31,11 +26,7 @@ function Signup() {
       toast.success("Successfully signed up!");
       router.push("/overview");
     }
-  });
-
-  watch((data) => {
-    console.log(data);
-  });
+  };
 
   return (
     <main className="flex h-screen bg-auth-background w-full">
@@ -93,6 +84,7 @@ function Signup() {
             name="Continue with Google"
             variant="google"
             className="w-full"
+            onClick={signInWithGoogle}
             icon={<FcGoogle />}
           />
         </div>
@@ -103,7 +95,10 @@ function Signup() {
           </span>
           <span className="h-px bg-lightGray flex-1" />
         </div>
-        <form onSubmit={handleFormSubmit} className="flex flex-col gap-3.5">
+        <form
+          onSubmit={handleSubmit(handleSignUp)}
+          className="flex flex-col gap-3.5"
+        >
           <Input
             type="text"
             label="FULL NAME"
@@ -129,7 +124,7 @@ function Signup() {
             name="Create account →"
             className="w-full mt-4"
             variant="purple"
-            onClick={handleFormSubmit}
+            onClick={handleSubmit(handleSignUp)}
           />
         </form>
         <div className="text-sm text-text-muted text-center">

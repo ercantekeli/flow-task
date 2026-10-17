@@ -6,7 +6,7 @@ import IconBox from "@/components/login/IconBox";
 import Button from "@/components/Button";
 import { FcGoogle } from "react-icons/fc";
 import Input from "@/components/Input";
-import { signInWithEmail } from "@/services/authService";
+import { signInWithEmail, signInWithGoogle } from "@/services/authService";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
@@ -80,6 +80,7 @@ function Login() {
         <div>
           <Button
             name="Continue with Google"
+            onClick={signInWithGoogle}
             variant="google"
             className="w-full"
             icon={<FcGoogle />}

@@ -57,7 +57,7 @@ const Sidebar = () => {
       (async () => {
         const { error } = await signOut();
         if (error) {
-          toast.error("Error signing out:", error.message);
+          toast.error("Error signing out:", error?.message);
         } else {
           router.push("/login");
         }
