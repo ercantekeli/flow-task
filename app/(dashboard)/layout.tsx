@@ -6,6 +6,7 @@ import { AuthContext } from "@/context/authContext";
 
 import Sidebar from "@/components/overview/layout/Sidebar";
 import Header from "@/components/overview/layout/Header";
+import { getName } from "@/utils/stringHelpers";
 
 const DashboardLayout = ({
   children,
@@ -13,15 +14,13 @@ const DashboardLayout = ({
   children: React.ReactNode;
 }>) => {
   const pathname = usePathname();
-  const { user } = useContext(AuthContext);
+  const context = useContext(AuthContext);
 
   const headerContent: { [key: string]: { title: string; subtitle: string } } =
     {
       "/overview": {
         title:
-          "Good morning, " +
-          (user?.full_name ? user.full_name.split(" ")[0] : "there") +
-          " 👋",
+          "Good morning, " + getName(context?.user?.full_name || "") + " 👋",
         subtitle: "Here's what's happening with your projects today.",
       },
       "/board": {

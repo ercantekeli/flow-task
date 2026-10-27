@@ -1,6 +1,6 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import React, { useContext, useState } from "react";
+
 import { getAllTasks } from "@/services/boardService";
 
 import {
